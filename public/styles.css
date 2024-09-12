@@ -1,0 +1,118 @@
+:root {
+  --accent-color: #ffe4c4;
+  --secondary-color: #555;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+*::before,
+*::after,
+* {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+header {
+  background-color: var(--accent-color);
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+nav > * {
+  margin: 0;
+  text-align: center;
+}
+
+nav h1 {
+  font-size: xx-large;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-weight: bold;
+  font-size: small;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff7;
+}
+
+nav > a:active {
+  transform: scale(0.9);
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+}
+
+main {
+  align-self: center;
+  justify-self: center;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  padding: 2rem;
+  overflow: auto;
+  max-width: 480px;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 #0003;
+  background-color: var(--accent-color);
+}
+
+.message-card {
+  background-color: #fff7;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 1px #0003;
+}
+
+.message-card:last-of-type {
+  margin-bottom: 0;
+}
+
+.user-name {
+  margin: 0;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.message-date {
+  color: var(--secondary-color);
+  font-size: x-small;
+  margin-top: 0.25rem;
+}
+
+.message {
+  font-style: italic;
+  margin-top: 1.5rem;
+}
