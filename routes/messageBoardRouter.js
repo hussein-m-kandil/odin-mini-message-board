@@ -1,27 +1,8 @@
 import express from "express";
-import { formatDistanceToNow } from "date-fns";
-
-const messages = [
-  {
-    text: "Hi there!",
-    userName: "Superman",
-    date: new Date(),
-  },
-  {
-    text: "Hello World!",
-    userName: "Batman",
-    date: new Date(),
-  },
-];
+import messageController from "../controllers/messageController.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("index", {
-    title: "Odin Mini Message Board",
-    formatDate: formatDistanceToNow,
-    messages,
-  });
-});
+router.get("/", messageController.getAllMessages);
 
 export default router;
