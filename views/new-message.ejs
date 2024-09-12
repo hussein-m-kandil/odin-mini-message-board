@@ -4,28 +4,29 @@
   <body>
     <%- include("components/header", {title}) %>
     <main>
-      <h2><%= title %></h2>
-      <% if(locals.errorMessage) { %>
-      <div id="flash-message"><%= errorMessage %></div>
-      <% } %>
+      <h2 class="form-head"><%= title %></h2>
+
+      <div id="flash-message">
+        <% if(locals.errorMessage) { %> <%= errorMessage %> <% } %>
+      </div>
       <form action="/new" method="post">
         <div>
-          <label for="user-name">Name</label>
-          <br />
           <input
             type="text"
-            id="user-name"
             name="user-name"
-            placeholder="Thor"
+            class="user-name"
+            placeholder="Your name"
             maxlength="28"
           />
         </div>
         <div>
-          <label for="message">Message</label>
-          <br />
-          <textarea name="message" id="message" placeholder="Hello!"></textarea>
+          <textarea
+            name="message"
+            class="message"
+            placeholder="Your message"
+          ></textarea>
         </div>
-        <button type="submit">Send</button>
+        <button type="submit" class="send-message">Send</button>
       </form>
     </main>
     <script>
