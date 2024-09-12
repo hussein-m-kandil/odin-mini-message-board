@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("components/head", { title }) %>
+  <body>
+    <%- include("components/header") %>
+    <main>
+      <% if (locals.messages && Array.isArray(messages) && messages.length > 0)
+      {%> <% messages.forEach(msg => { %>
+      <div class="message-card">
+        <div class="user-name"><%= msg.userName %></div>
+        <div class="message-date"><%= formatDate(msg.date) %></div>
+        <div class="message"><%= msg.text %></div>
+      </div>
+      <% }) %> <% } else { %>
+      <p>There are no messages on the board.</p>
+      <% } %>
+    </main>
+  </body>
+</html>
