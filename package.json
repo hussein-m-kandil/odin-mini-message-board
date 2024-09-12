@@ -1,0 +1,38 @@
+{
+  "name": "odin-mini-message-board",
+  "version": "1.0.0",
+  "description": "A mini message board, developed as part of the Node.js course at The Odin Project.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "export NODE_ENV=production; node app.js",
+    "dev": "export PORT=8080 NODE_ENV=development; node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hussein-m-kandil/odin-mini-message-board.git"
+  },
+  "keywords": [
+    "javascript",
+    "node.js",
+    "express",
+    "ejs",
+    "mvc",
+    "message-board",
+    "web",
+    "backend",
+    "development"
+  ],
+  "author": "Hussein Kandil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hussein-m-kandil/odin-mini-message-board/issues"
+  },
+  "homepage": "https://github.com/hussein-m-kandil/odin-mini-message-board#readme",
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0"
+  }
+}
