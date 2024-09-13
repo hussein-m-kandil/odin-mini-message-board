@@ -1,8 +1,9 @@
 import path from "path";
 import process from "process";
 import express from "express";
-import messageBoardRouter from "./routes/messageBoardRouter.js";
 import newMessageRouter from "./routes/newMessageRouter.js";
+import messageBoardRouter from "./routes/messageBoardRouter.js";
+import messageDetailsRouter from "./routes/messageDetailsRouter.js";
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(process.cwd(), "public");
@@ -21,5 +22,6 @@ app.use((req, res, next) => {
 
 app.use("/", messageBoardRouter);
 app.use("/new", newMessageRouter);
+app.use("/details", messageDetailsRouter);
 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));

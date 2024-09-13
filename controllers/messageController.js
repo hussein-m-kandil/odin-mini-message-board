@@ -2,11 +2,27 @@ import { formatDistanceToNow } from "date-fns";
 import messages from "../model/messages.js";
 
 export default {
+  getMessageDetails(req, res) {
+    const id = req.params.id;
+    if (id && id < messages.length) {
+      const msg = messages[id];
+      res.render("message-details", {
+        title: "Message Details",
+        message: { ...msg, date: formatDistanceToNow(msg.date) },
+      });
+    } else {
+      res.redirect("/");
+    }
+  },
+
   getAllMessages(req, res) {
     res.render("index", {
       title: "Odin Mini Message Board",
-      formatDate: formatDistanceToNow,
-      messages,
+      messages: messages.map((msg) => {
+        const formattedDate = formatDistanceToNow(msg.date);
+        const messageText = `${msg.text.slice(0, 2)}...`;
+        return { ...msg, text: messageText, date: formattedDate };
+      }),
     });
   },
 

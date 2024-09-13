@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <%- include("components/head", { title }) %>
+  <body>
+    <%- include("components/header") %>
+    <main>
+      <div class="message-card">
+        <div class="user-name"><%= message.userName %></div>
+        <div class="message-date"><%= message.date %></div>
+        <div class="message"><%= message.text %></div>
+      </div>
+    </main>
+  </body>
+</html>

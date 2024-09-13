@@ -5,11 +5,13 @@
     <%- include("components/header") %>
     <main>
       <% if (locals.messages && Array.isArray(messages) && messages.length > 0)
-      {%> <% messages.forEach(msg => { %>
+      {%> <% messages.forEach((message, i) => { %>
       <div class="message-card">
-        <div class="user-name"><%= msg.userName %></div>
-        <div class="message-date"><%= formatDate(msg.date) %></div>
-        <div class="message"><%= msg.text %></div>
+        <div class="user-name"><%= message.userName %></div>
+        <div class="message-date"><%= message.date %></div>
+        <div class="message">
+          <%= message.text %><a href="/details/<%= i %>">see message</a>
+        </div>
       </div>
       <% }) %> <% } else { %>
       <p>There are no messages on the board.</p>
