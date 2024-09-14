@@ -27,7 +27,10 @@ async function connectToDB() {
     console.log("DB is disconnected");
     connection.removeAllListeners();
   });
-  await mongoose.connect(MONGODB_URI, { dbName: DB_NAME });
+  await mongoose.connect(MONGODB_URI, {
+    dbName: DB_NAME,
+    serverSelectionTimeoutMS: 15000,
+  });
   return connection;
 }
 
