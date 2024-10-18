@@ -4,21 +4,30 @@
   <body>
     <%- include("components/header") %>
     <main>
-      <% if (locals.messages && Array.isArray(messages) && messages.length > 0)
-      { %> <% messages.forEach((message, i) => { %>
-      <div class="message-card">
-        <div class="user-name"><%= message.userName %></div>
-        <div class="message-date"><%= message.date %></div>
-        <div class="message">
-          <%= message.text %><a href="/details/<%= message.id %>"
-            >see message</a
-          >
-        </div>
-      </div>
-      <% }) %> <% } else if (locals.errorMessage) { %>
-      <p id="flash-message"><%= errorMessage %></p>
+      <p class="note">
+        <strong>Note</strong>: This app is just for practicing back-end
+        programming with Express.js, so there is no need to bloat the database
+        with useless messages; hence,
+        <em>the number of messages allowed is limited</em>.
+      </p>
+      <% if (Array.isArray(locals.messages) && messages.length > 0) { %>
+      <table width="100%">
+        <tbody>
+          <% messages.forEach(({id, sender, message, date}, i) => { %>
+          <tr>
+            <td class="sender"><%= sender %></td>
+            <td class="message">
+              <%= message %><a href="/details/<%= id %>">see message</a>
+            </td>
+            <td class="date"><%= date %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else if (locals.error) { %>
+      <p class="error"><%= error %></p>
       <% } else { %>
-      <p id="flash-message">There are no messages on the board.</p>
+      <p class="error">There are no messages on the board.</p>
       <% } %>
     </main>
   </body>
