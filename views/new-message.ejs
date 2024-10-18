@@ -4,37 +4,35 @@
   <body>
     <%- include("components/header", {title}) %>
     <main>
-      <h2 class="form-head"><%= title %></h2>
+      <% if (locals.serverError) { %>
+      <div class="error"><%= serverError %></div>
+      <% } %>
 
-      <div id="flash-message">
-        <% if(locals.errorMessage) { %> <%= errorMessage %> <% } %>
-      </div>
       <form action="/new" method="post">
         <div>
+          <% if (locals.errors?.sender) { %>
+          <div class="error"><%= errors.sender.msg %></div>
+          <% } %>
           <input
             type="text"
-            name="user-name"
+            name="sender"
             class="user-name"
             placeholder="Your name"
             maxlength="28"
             autofocus
+            value="<%= locals.sender || '' %>"
           />
         </div>
         <div>
-          <textarea
-            name="message"
-            class="message"
-            placeholder="Your message"
-          ></textarea>
+          <% if (locals.errors?.message) { %>
+          <div class="error"><%= errors.message.msg %></div>
+          <% } %>
+          <textarea name="message" class="message" placeholder="Your message">
+<%= locals.message || '' %></textarea
+          >
         </div>
         <button type="submit" class="send-message">Send</button>
       </form>
     </main>
-    <script>
-      const flash = document.getElementById("flash-message");
-      if (flash) {
-        setTimeout(() => (flash.textContent = ""), 5000);
-      }
-    </script>
   </body>
 </html>
