@@ -5,15 +5,19 @@
     <%- include("components/header") %>
     <main>
       <% if (locals.message) { %>
-      <div class="message-card">
-        <div class="user-name"><%= message.userName %></div>
-        <div class="message-date"><%= message.date %></div>
-        <div class="message"><%= message.text %></div>
-      </div>
-      <% } else if (locals.errorMessage) { %>
-      <p id="flash-message"><%= errorMessage %></p>
+      <table width="100%">
+        <tbody>
+          <tr>
+            <td class="sender"><%= message.sender %></td>
+            <td class="message"><%= message.message %></td>
+            <td class="date"><%= message.date %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% } else if (locals.error) { %>
+      <p class="error"><%= error %></p>
       <% } else { %>
-      <p id="flash-message">There is no message to represent!</p>
+      <p class="error">There is no message to represent!</p>
       <% } %>
     </main>
   </body>
