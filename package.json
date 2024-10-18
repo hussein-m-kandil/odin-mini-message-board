@@ -4,8 +4,11 @@
   "description": "A mini message board, developed as part of the Node.js course at The Odin Project.",
   "main": "api/index.js",
   "scripts": {
-    "start": "export NODE_ENV=production",
-    "dev": "[ -f .env.local ] && export $(cat .env.local); export NODE_ENV=development;"
+    "start": "export NODE_ENV=production; node api/index.js",
+    "dev": "export NODE_ENV=development; node --env-file=.env --watch api/index.js",
+    "vercel:dev": "[ -f .env ] && export $(cat .env) && vercel dev --listen 3001",
+    "vercel:deploy": "vercel",
+    "vercel:production": "vercel --prod"
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,10 @@
     "date-fns": "^3.6.0",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
-    "mongoose": "^8.6.2"
+    "express-validator": "^7.2.0",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "vercel": "^37.11.0"
   }
 }
